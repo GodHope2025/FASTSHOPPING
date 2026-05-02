@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona Sports | FastShopping</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR UNIFICADO -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">Fast<span>Shopping</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="mundo-bebe.html">Mundo Bebé</a></li>
+                    <!-- Enlace activo con "s" al final como pediste -->
+                    <li><a href="sports.html" class="active">Zona Sports</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+            <!-- ¡OJO AQUÍ! Este div está vacío. El JS inyectará aquí "Iniciar/Crear" o "Aldo | Salir" dependiendo de si iniciaste sesión -->
+            <div class="user-menu" id="user-menu-container"></div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="card hero-welcome">
+            <div class="welcome-content">
+                <span style="background: white; color: #6366f1; padding: 6px 16px; border-radius: 12px; font-weight: 700; font-size: 14px; margin-bottom: 10px; display: inline-block;">Equipamiento Deportivo</span>
+                <h2>Explora la Zona Sports</h2>
+                <p>Descubre el mejor equipamiento para llevar tu entrenamiento al siguiente nivel.</p>
+            </div>
+        </section>
+
+        <!-- CATÁLOGO COMPLETO ZONA SPORTS (15 PRODUCTOS) -->
+        <h3 class="section-title">Nuestros Productos Deportivos</h3>
+        <section class="products-grid">
+            
+            <!-- Producto 1 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/bicicleta de montaña.png" alt="Bicicleta Montañera"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Bicicleta Montañera</h4>
+                <p class="price">S/ 580.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/equipo de gimnasio.webp" alt="Set de Pesas"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Set de Pesas Prof.</h4>
+                <p class="price">S/ 320.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/PELOTA DE FUTBOL.webp" alt="Pelota de Fútbol"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Pelota de Fútbol Pro</h4>
+                <p class="price">S/ 95.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/pelota de voley.webp" alt="Pelota de Voley"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Pelota de Voley Playero</h4>
+                <p class="price">S/ 110.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/guantes.webp" alt="Guantes de Box"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Guantes de Boxeo</h4>
+                <p class="price">S/ 150.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/soga.webp" alt="Soga de saltar"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Soga de Saltar Veloz</h4>
+                <p class="price">S/ 35.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/colchoneta.webp" alt="Colchoneta Yoga"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Colchoneta Yoga/Pilates</h4>
+                <p class="price">S/ 60.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/mancuernas.webp" alt="Mancuernas 5kg"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Mancuernas Hexagonales 5kg</h4>
+                <p class="price">S/ 85.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 9 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/bandas.webp" alt="Bandas de Resistencia"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Pack Bandas de Resistencia</h4>
+                <p class="price">S/ 45.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 10 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/botella.webp" alt="Tomatodo Deportivo"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Tomatodo Deportivo 1L</h4>
+                <p class="price">S/ 25.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 11 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/raqueta.webp" alt="Raqueta Tenis"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Raqueta de Tenis Pro</h4>
+                <p class="price">S/ 210.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 12 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/rodilleras.webp" alt="Rodilleras"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Rodilleras de Compresión</h4>
+                <p class="price">S/ 40.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 13 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/bolso.webp" alt="Bolso de Gimnasio"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Bolso de Gimnasio</h4>
+                <p class="price">S/ 120.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 14 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/smartwatch.webp" alt="Reloj Deportivo"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Reloj Inteligente Sport</h4>
+                <p class="price">S/ 180.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <!-- Producto 15 -->
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/zapatillas.webp" alt="Zapatillas Running"></div>
+                <span class="category">Zona Sports</span>
+                <h4>Zapatillas Running</h4>
+                <p class="price">S/ 250.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- EL CEREBRO: Esto es lo que pone y quita los botones de salir/iniciar sesión -->
+    <script src="./JS/carrito.js"></script>
+</body>
+</html>

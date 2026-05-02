@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | FastShopping</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">Fast<span>Shopping</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="mundo-bebe.html">Mundo Bebé</a></li>
+                    <li><a href="sport.html">Zona Sport</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu" id="user-menu-container"></div>
+        </div>
+    </header>
+
+    <main class="main-layout" style="display: flex; justify-content: center; align-items: center; min-height: 75vh;">
+        <section class="card" style="width: 100%; max-width: 420px; text-align: left; margin: 0 auto; padding: 35px;">
+            
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h2 style="margin: 0; color: #1e293b; font-size: 24px;">Acceso Seguro</h2>
+                <p style="margin-top: 8px; color: #475569; font-size: 14px;">Ingresa para realizar tus compras.</p>
+            </div>
+
+            <form id="form-login">
+                <div style="margin-bottom: 15px;">
+                    <label style="font-weight: 600; font-size: 14px; display: block; margin-bottom: 8px; color: #1e293b;">Correo Electrónico</label>
+                    <input type="email" id="log-email" placeholder="ejemplo@correo.com" required style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 14px; outline: none;">
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <label style="font-weight: 600; font-size: 14px; display: block; margin-bottom: 8px; color: #1e293b;">Contraseña</label>
+                    <input type="password" id="log-pass" placeholder="••••••••" required style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 14px; outline: none;">
+                </div>
+                
+                <button type="button" onclick="ejecutarLogin()" style="width: 100%; padding: 14px; border-radius: 12px; font-size: 16px; background: #6366f1; color: white; border: none; font-weight: bold; cursor: pointer;">Ingresar</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #475569; font-weight: 600;">
+                ¿No tienes cuenta? <a href="registrar.html" style="color: #6366f1; text-decoration: none;">Regístrate aquí</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="./JS/carrito.js"></script>
+    <script>
+        function ejecutarLogin() {
+            const correo = document.getElementById('log-email').value;
+            const pass = document.getElementById('log-pass').value;
+
+            if (correo === "" || pass === "") {
+                mostrarNotificacion("Completa los datos", "error");
+                return;
+            }
+
+            let nombre = correo.split('@')[0];
+            nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+            
+            localStorage.setItem('fastshopping_sesion', 'activa');
+            localStorage.setItem('usuario_nombre', nombre);
+
+            mostrarNotificacion(`¡Bienvenido, ${nombre}!`, "exito");
+            setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+        }
+    </script>
+</body>
+</html>
