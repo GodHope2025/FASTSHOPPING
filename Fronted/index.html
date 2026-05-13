@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastShopping | Inicio</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container" style="display: flex; justify-content: space-between; width: 100%;">
+            <div class="logo">Fast<span>Shopping</span></div>
+            <nav style="flex: 1; display: flex; justify-content: center;">
+                <ul>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="mundo-bebe.html">Mundo Bebé</a></li>
+                    <li><a href="sports.html">Zona Sport</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu" id="user-menu-container"></div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="card hero-welcome">
+            <div class="welcome-content">
+                <span style="background: white; color: #6366f1; padding: 6px 16px; border-radius: 12px; font-weight: 700; font-size: 14px; margin-bottom: 10px; display: inline-block;">¡Hola de nuevo!</span>
+                <h2>Bienvenido a FastShopping</h2>
+                <p>Tu tienda de confianza para el desarrollo de tu bebé y tu rendimiento deportivo.</p>
+            </div>
+        </section>
+
+        <!-- CATÁLOGO COMPLETO MUNDO BEBÉ -->
+        <h3 class="section-title">Destacados Mundo Bebé</h3>
+        <section class="products-grid">
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/caminadora.webp" alt="Andador Musical"></div>
+                <span class="category">Mundo Bebé</span>
+                <h4>Andador Musical</h4>
+                <p class="price">S/ 145.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+            
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/gimnasio para bebes.webp" alt="Gimnasio"></div>
+                <span class="category">Mundo Bebé</span>
+                <h4>Gimnasio de Estimulación</h4>
+                <p class="price">S/ 180.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+            
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/ropa para bebe recien nacido.webp" alt="Ropa"></div>
+                <span class="category">Mundo Bebé</span>
+                <h4>Pack Ropa Algodón</h4>
+                <p class="price">S/ 65.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/peluche 2.webp" alt="Peluche Suave"></div>
+                <span class="category">Mundo Bebé</span>
+                <h4>Peluche Suave</h4>
+                <p class="price">S/ 45.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/silla para bebes 1.webp" alt="Silla de Bebé"></div>
+                <span class="category">Mundo Bebé</span>
+                <h4>Silla de Bebé N°1</h4>
+                <p class="price">S/ 120.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+        </section>
+
+        <!-- CATÁLOGO COMPLETO ZONA SPORT -->
+        <h3 class="section-title">Destacados Zona Sport</h3>
+        <section class="products-grid">
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/bicicleta de montaña.png" alt="Bicicleta Montañera"></div>
+                <span class="category">Zona Sport</span>
+                <h4>Bicicleta Montañera</h4>
+                <p class="price">S/ 580.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/equipo de gimnasio.webp" alt="Set de Pesas Prof."></div>
+                <span class="category">Zona Sport</span>
+                <h4>Set de Pesas Prof.</h4>
+                <p class="price">S/ 320.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/PELOTA DE FUTBOL.webp" alt="Pelota de Fútbol"></div>
+                <span class="category">Zona Sport</span>
+                <h4>Pelota de Fútbol Pro</h4>
+                <p class="price">S/ 95.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+
+            <div class="card product-card">
+                <div class="img-box"><img src="./IMG/pelota de voley.webp" alt="Pelota de Voley"></div>
+                <span class="category">Zona Sport</span>
+                <h4>Pelota de Voley Playero</h4>
+                <p class="price">S/ 110.00</p>
+                <button class="btn-add">Añadir al Carrito</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./JS/carrito.js"></script>
+</body>
+</html>
