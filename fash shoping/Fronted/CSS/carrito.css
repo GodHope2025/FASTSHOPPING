@@ -1,0 +1,76 @@
+/* Layout a dos columnas para el carrito */
+.cart-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.cart-list {
+    width: 100%;
+    max-width: 800px;
+    min-height: 200px;
+}
+
+/* Diseño individual de la fila del producto en el carrito */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background: white;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.item-detalles {
+    flex: 1;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.item-detalles h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: var(--text);
+}
+
+.btn-eliminar {
+    background: #ef4444; /* Rojo para eliminar */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-eliminar:hover {
+    background: #dc2626;
+}
+
+.cart-summary {
+    width: 100%;
+    max-width: 450px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 20px;
+}

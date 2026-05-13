@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | FastShopping</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">Fast<span>Shopping</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="mundo-bebe.html">Mundo Bebé</a></li>
+                    <li><a href="sport.html">Zona Sport</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-layout" style="display: flex; justify-content: center; align-items: center; min-height: 75vh;">
+        <section class="card" style="width: 100%; max-width: 420px; text-align: left; margin: 0 auto; padding: 35px;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h2 style="margin: 0; color: #1e293b; font-size: 24px;">Bienvenido de nuevo</h2>
+                <p style="color: #64748b; font-size: 14px;">Ingresa tus credenciales</p>
+            </div>
+
+            <form id="form-login">
+                <div style="margin-bottom: 15px;">
+                    <label style="font-weight: 600; font-size: 14px; display: block; margin-bottom: 8px;">Correo Electrónico</label>
+                    <input type="email" id="login-email" placeholder="tu@correo.com" required style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); box-sizing: border-box;">
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <label style="font-weight: 600; font-size: 14px; display: block; margin-bottom: 8px;">Contraseña</label>
+                    <input type="password" id="login-pass" placeholder="Tu contraseña" required style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); box-sizing: border-box;">
+                </div>
+                
+                <button type="button" onclick="ejecutarLogin()" style="width: 100%; padding: 14px; border-radius: 12px; font-size: 16px; background: #6366f1; color: white; border: none; font-weight: bold; cursor: pointer;">Ingresar</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #475569;">
+                ¿No tienes cuenta? <a href="registrar.html" style="color: #6366f1; text-decoration: none; font-weight: 600;">Regístrate aquí</a>
+            </p>
+        </section>
+    </main>
+
+    <script>
+        async function ejecutarLogin() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-pass').value;
+
+            try {
+                // LLAMADA AL BACKEND PARA AUTENTICAR
+                const respuesta = await fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const resultado = await respuesta.json();
+
+                if (respuesta.ok) {
+                    // Guardar datos del usuario
+                    localStorage.setItem('fastshopping_sesion', 'activa');
+                    localStorage.setItem('usuario_nombre', resultado.usuario.nombre);
+                    localStorage.setItem('usuario_id', resultado.usuario.id);
+
+                    // RECUPERAR CARRITO DE FIREBASE AL ENTRAR
+                    try {
+                        const resCarrito = await fetch(`http://localhost:3000/api/carrito/obtener/${resultado.usuario.id}`);
+                        const datosCarrito = await resCarrito.json();
+                        if (datosCarrito.productos) {
+                            localStorage.setItem('carrito', JSON.stringify(datosCarrito.productos));
+                        }
+                    } catch (e) {
+                        console.log("No se pudo recuperar el carrito anterior.");
+                    }
+
+                    alert(`¡Bienvenido, ${resultado.usuario.nombre}!`);
+                    window.location.href = 'index.html';
+                } else {
+                    alert("❌ " + resultado.error);
+                }
+            } catch (error) {
+                alert("Servidor apagado. Enciende el backend en la terminal.");
+            }
+        }
+    </script>
+</body>
+</html>

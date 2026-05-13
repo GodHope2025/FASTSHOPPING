@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | FastShopping</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">Fast<span>Shopping</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="mundo-bebe.html">Mundo Bebé</a></li>
+                    <li><a href="sports.html">Zona Sport</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu" id="user-menu-container"></div>
+        </div>
+    </header>
+
+    <main class="main-layout" style="display: flex; justify-content: center; align-items: center; min-height: 80vh;">
+        <section class="card" style="width: 100%; max-width: 400px; padding: 30px;">
+            <h2 style="text-align: center;">Únete a FastShopping</h2>
+            <form onsubmit="registrarUsuario(event)">
+                <div style="margin-bottom: 15px;">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="reg-nombre" placeholder="Ej. Aldo Milian" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" required>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label>Teléfono / WhatsApp</label>
+                    <input type="text" id="reg-telefono" placeholder="987654321" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" required>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="reg-email" placeholder="correo@ejemplo.com" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" required>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label>Contraseña</label>
+                    <input type="password" id="reg-password" placeholder="••••••••" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" required>
+                </div>
+
+                <button type="submit" style="width: 100%; padding: 12px; background: #6366f1; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    Crear mi Cuenta
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        async function registrarUsuario(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('reg-nombre').value;
+            const telefono = document.getElementById('reg-telefono').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            try {
+                const respuesta = await fetch('http://localhost:3000/api/auth/registrar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre, telefono, email, password })
+                });
+
+                const resultado = await respuesta.json();
+
+                if (respuesta.ok) {
+                    localStorage.setItem('usuario_nombre', nombre);
+                    localStorage.setItem('usuario_id', resultado.id);
+                    alert("¡Registro exitoso!");
+                    window.location.href = 'index.html';
+                } else {
+                    alert("Error: " + resultado.error);
+                }
+            } catch (error) {
+                alert("Verifica que el servidor esté encendido.");
+            }
+        }
+    </script>
+</body>
+</html>
