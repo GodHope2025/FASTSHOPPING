@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     actualizarMenuUsuario();
     activarBotonesCompra();
-    // Si el usuario está en la página carrito.html, mostramos la lista
     if (window.location.pathname.includes('carrito.html')) {
         renderizarCarrito();
     }
@@ -36,7 +35,7 @@ async function probarUpdate() {
     if (!nuevoNombre) return;
     const userId = localStorage.getItem('usuario_id');
     try {
-        const res = await fetch(`http://localhost:3000/api/auth/actualizar/${userId}`, {
+        const res = await fetch(`https://fastshopping-backend.onrender.com/api/auth/actualizar/${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ nombre: nuevoNombre })
@@ -53,7 +52,7 @@ async function eliminarMiCuenta() {
     if (!confirm("¿Eliminar tu cuenta de Firebase definitivamente?")) return;
     const userId = localStorage.getItem('usuario_id');
     try {
-        const res = await fetch(`http://localhost:3000/api/auth/eliminar/${userId}`, { method: 'DELETE' });
+        const res = await fetch(`https://fastshopping-backend.onrender.com/api/auth/eliminar/${userId}`, { method: 'DELETE' });
         if (res.ok) { alert("Cuenta eliminada."); cerrarSesion(); }
     } catch (e) { alert("Error al eliminar."); }
 }
@@ -91,7 +90,7 @@ async function sincronizarConFirebase() {
     const productos = JSON.parse(localStorage.getItem('carrito')) || [];
     if (!userId) return;
     try {
-        await fetch('http://localhost:3000/api/carrito/guardar', {
+        await fetch('https://fastshopping-backend.onrender.com/api/carrito/guardar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId, productos })
@@ -137,7 +136,6 @@ function eliminarDelCarrito(index) {
     sincronizarConFirebase();
 }
 
-// --- FUNCIÓN FINAL DE COMPRA 🎉 ---
 async function procesarPago() {
     const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
     const userId = localStorage.getItem('usuario_id');
@@ -158,7 +156,7 @@ async function procesarPago() {
 
     try {
         if (userId) {
-            await fetch('http://localhost:3000/api/carrito/guardar', {
+            await fetch('https://fastshopping-backend.onrender.com/api/carrito/guardar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId, productos: [] })
