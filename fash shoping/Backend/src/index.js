@@ -17,3 +17,7 @@ app.listen(PORT, () => {
     console.log(`✅ ¡Conexión a Firebase establecida con éxito!`);
     console.log(`🚀 Servidor FastShopping corriendo en http://localhost:${PORT}`);
 });
+
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'FastShopping Backend funcionando ✅' });
+});
