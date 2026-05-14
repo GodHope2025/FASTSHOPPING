@@ -53,36 +53,36 @@
         </section>
     </main>
 
-    <script>
-        async function registrarUsuario(event) {
-            event.preventDefault();
+   <script>
+    async function registrarUsuario(event) {
+        event.preventDefault();
 
-            const nombre = document.getElementById('reg-nombre').value;
-            const telefono = document.getElementById('reg-telefono').value;
-            const email = document.getElementById('reg-email').value;
-            const password = document.getElementById('reg-password').value;
+        const nombre = document.getElementById('reg-nombre').value;
+        const telefono = document.getElementById('reg-telefono').value;
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-password').value;
 
-            try {
-                const respuesta = await fetch('http://localhost:3000/api/auth/registrar', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nombre, telefono, email, password })
-                });
+        try {
+            const respuesta = await fetch('https://fastshopping-backend.onrender.com/api/auth/registrar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, telefono, email, password })
+            });
 
-                const resultado = await respuesta.json();
+            const resultado = await respuesta.json();
 
-                if (respuesta.ok) {
-                    localStorage.setItem('usuario_nombre', nombre);
-                    localStorage.setItem('usuario_id', resultado.id);
-                    alert("¡Registro exitoso!");
-                    window.location.href = 'index.html';
-                } else {
-                    alert("Error: " + resultado.error);
-                }
-            } catch (error) {
-                alert("Verifica que el servidor esté encendido.");
+            if (respuesta.ok) {
+                localStorage.setItem('usuario_nombre', nombre);
+                localStorage.setItem('usuario_id', resultado.id);
+                alert("¡Registro exitoso!");
+                window.location.href = 'index.html';
+            } else {
+                alert("Error: " + resultado.error);
             }
+        } catch (error) {
+            alert("Error al conectar con el servidor.");
         }
-    </script>
+    }
+</script>
 </body>
 </html>
