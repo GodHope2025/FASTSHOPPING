@@ -51,46 +51,43 @@
     </main>
 
     <script>
-        async function ejecutarLogin() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-pass').value;
+    async function ejecutarLogin() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-pass').value;
 
-            try {
-                // LLAMADA AL BACKEND PARA AUTENTICAR
-                const respuesta = await fetch('http://localhost:3000/api/auth/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
+        try {
+            const respuesta = await fetch('https://fastshopping-backend.onrender.com/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
 
-                const resultado = await respuesta.json();
+            const resultado = await respuesta.json();
 
-                if (respuesta.ok) {
-                    // Guardar datos del usuario
-                    localStorage.setItem('fastshopping_sesion', 'activa');
-                    localStorage.setItem('usuario_nombre', resultado.usuario.nombre);
-                    localStorage.setItem('usuario_id', resultado.usuario.id);
+            if (respuesta.ok) {
+                localStorage.setItem('fastshopping_sesion', 'activa');
+                localStorage.setItem('usuario_nombre', resultado.usuario.nombre);
+                localStorage.setItem('usuario_id', resultado.usuario.id);
 
-                    // RECUPERAR CARRITO DE FIREBASE AL ENTRAR
-                    try {
-                        const resCarrito = await fetch(`http://localhost:3000/api/carrito/obtener/${resultado.usuario.id}`);
-                        const datosCarrito = await resCarrito.json();
-                        if (datosCarrito.productos) {
-                            localStorage.setItem('carrito', JSON.stringify(datosCarrito.productos));
-                        }
-                    } catch (e) {
-                        console.log("No se pudo recuperar el carrito anterior.");
+                try {
+                    const resCarrito = await fetch(`https://fastshopping-backend.onrender.com/api/carrito/obtener/${resultado.usuario.id}`);
+                    const datosCarrito = await resCarrito.json();
+                    if (datosCarrito.productos) {
+                        localStorage.setItem('carrito', JSON.stringify(datosCarrito.productos));
                     }
-
-                    alert(`¡Bienvenido, ${resultado.usuario.nombre}!`);
-                    window.location.href = 'index.html';
-                } else {
-                    alert("❌ " + resultado.error);
+                } catch (e) {
+                    console.log("No se pudo recuperar el carrito anterior.");
                 }
-            } catch (error) {
-                alert("Servidor apagado. Enciende el backend en la terminal.");
+
+                alert(`¡Bienvenido, ${resultado.usuario.nombre}!`);
+                window.location.href = 'index.html';
+            } else {
+                alert("❌ " + resultado.error);
             }
+        } catch (error) {
+            alert("Error al conectar con el servidor.");
         }
-    </script>
+    }
+</script>
 </body>
 </html>
