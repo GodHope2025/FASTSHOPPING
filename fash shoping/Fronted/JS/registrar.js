@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Enviamos los datos a la ruta que creamos en el backend
-            const respuesta = await fetch('http://localhost:3000/api/registrar', {
+            const respuesta = await fetch('fastshopping-production.up.railway.app', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
